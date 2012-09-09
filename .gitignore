@@ -1,0 +1,7 @@
+/.idea
+/.settings
+/target-eclipse
+/cobertura.ser
+/.DS_Store
+/target
+*.log
