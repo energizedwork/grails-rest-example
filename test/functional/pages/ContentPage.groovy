@@ -13,4 +13,5 @@ class ContentPage extends Page {
 	static content = {
 		items(required: false) { $('#contentTable tbody').not('.prototype').find('tr') }
 	}
+	
 }

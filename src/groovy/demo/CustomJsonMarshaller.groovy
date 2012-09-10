@@ -9,9 +9,7 @@ class CustomJsonMarshaller {
 	}
 	
 	static jobMarshaller = { Job job ->
-		marshall {
-			[id: job.resourceId, name: job.name, url: job.url]
-		}
+		
 	}
 	
 	static marshall(def marshaller) {

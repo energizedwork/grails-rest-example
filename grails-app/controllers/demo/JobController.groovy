@@ -7,6 +7,8 @@ class JobController {
 	JenkinsServer jenkinsServer
 	
 	def list() {
-		render jenkinsServer.getJobs(params.url) as JSON
+		List results = jenkinsServer.getJobs(params.url)
+		render results as JSON
 	}
+	
 }

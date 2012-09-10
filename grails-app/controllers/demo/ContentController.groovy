@@ -9,13 +9,12 @@ class ContentController {
 	}
 	
 	def show() {
-		render Content.get(params.id) as JSON
+		render Content.get(params.id) as JSON 
 	}
 	
 	def create() {
 		Content c = new Content(params)
-		c.save(flush:true, failOnError: true)
+		c.save(flush: true)
 		render c as JSON
 	}
-	
 }

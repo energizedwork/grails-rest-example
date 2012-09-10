@@ -2,33 +2,33 @@ package demo
 
 import groovyx.net.http.RESTClient
 import spock.lang.Specification
-import support.RemoteControlUtil
+import support.TestUtil
 
 class ContentApiSpec extends Specification {
 	
-	List allContent
-	RESTClient client = new RESTClientFactory().createClient()
-		
-	def setup () {
-				
-		RemoteControlUtil.nuke()
-		allContent = RemoteControlUtil.exec {
-			3.times { 
-				Content c = new Content(title: "content-$it")
-				c.save(flush:true, failOnError: true)
-			}
-			Content.list()
-		}
-	}
+	List allContent = []
+	RESTClient client
 	
+	def setup() {
+		client = new RESTClientFactory().client
+		
+		TestUtil.nuke()
+				
+		3.times {
+			Content c = new Content(title: "content-$it")
+			allContent << c.save(flush:true)
+		}			
+		
+	}
+
 	def "Retrieves a list of content"() {
 		
 		when:
 			def response = client.get(uri: 'http://localhost:8080/api/content')
 		
-		then:		
+		then:
 			response.status == 200
-			response.data.size() == 3
+			response.data.size() == 3		
 	}
 	
 	def "Retrieves the given content"() {
@@ -41,23 +41,21 @@ class ContentApiSpec extends Specification {
 		
 		then:
 			response.status == 200
-			response.data.title == c.title
+			response.data.title == 'content-1'
 	}
 	
 	def "Creates content"() {
-	
+		
 		given:
-			Map params = [title: 'Foo']
+			Map params = [title: 'Batman']
 			
 		when:
 			def response = client.post(uri: 'http://localhost:8080/api/content', body: params)
 			
 		then:
 			response.status == 200
-			response.data.id =~ /content\/\d+/
-			response.data.title == 'Foo'
-			
+			response.data.title == 'Batman'
+			response.data.id =~ /content\/\d+/		
 	}
-
 	
 }

@@ -1,11 +1,13 @@
 package steps
 
-import support.RemoteContentRepository
+import demo.Content
 
 this.metaClass.mixin(cucumber.runtime.groovy.EN)
 
-RemoteContentRepository repo = new RemoteContentRepository()
+allContent = []
 
 Given(~'that there are (\\d+) items of content') { int n ->	
-	repo.createRandomContent(n)	
+	n.times {
+		allContent << new Content(title: "content-$it").save(flush:true)
+	}
 }

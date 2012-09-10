@@ -8,15 +8,16 @@ this.metaClass.mixin (cucumber.runtime.groovy.Hooks)
 def bindingUpdater
 
 Before () {
-	RemoteControlUtil.nuke()
+	TestUtil.nuke()
+	
+	BetamaxUtil.startProxy('cucumber', [:])
 	
 	bindingUpdater = new BindingUpdater (binding, new Browser())
 	bindingUpdater.initialize()
-	
-	BetamaxUtil.startProxy('cucumber', [:])
 }
 
 After () {
 	bindingUpdater.remove()
+	
 	BetamaxUtil.stopProxy()
 }

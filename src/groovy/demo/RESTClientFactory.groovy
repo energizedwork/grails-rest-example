@@ -7,13 +7,12 @@ import org.apache.http.conn.routing.HttpRoutePlanner
 import org.apache.http.impl.conn.ProxySelectorRoutePlanner
 
 class RESTClientFactory {
-
-	RESTClient client
 	
-	RESTClient createClient() {
-		client = new RESTClient()
-		defaultToUrlEncoding()
+	RESTClient client = new RESTClient()
+	
+	RESTClient getClient() {
 		enableProxyConfiguration()
+		defaultToUrlEncoding()
 		client
 	}
 	

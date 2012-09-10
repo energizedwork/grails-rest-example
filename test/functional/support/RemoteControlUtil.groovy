@@ -9,8 +9,7 @@ class RemoteControlUtil {
 		
 	static void nuke() {
 		exec {
-			Content.list()*.delete(flush:true)
-			Job.list()*.delete(flush:true)
+			TestUtil.nuke()
 		}
 	}
 	

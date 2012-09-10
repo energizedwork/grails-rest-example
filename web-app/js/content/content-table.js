@@ -8,32 +8,29 @@ var ContentTable = function(element, dataSource) {
 		
 		var table = this;
 		
-		dataSource.list(function(data) {
+		this.dataSource.list(function(data) {
 			$.each(data, function() {
-				table.renderRow.call(table, this); 
-			});
+				table.renderRow.call(table, this);
+			})
 		});
 	}
 	
 	this.renderRow = function(content) {
 		this.clonePrototypeRow();
-		this.setTitle(content);
+		this.setTitle(content.title);
 		this.appendRow();
 	}
 	
 	this.clonePrototypeRow = function() {
-		this.currentRow = $('tbody.prototype tr', this.element).clone();
+		this.currentRow = $('tbody.prototype tr', this.element).clone();		
 	}
 	
-	this.setTitle = function(content) {
-		$('td.title', this.currentRow).text(content.title)
+	this.setTitle = function(title) {
+		$('td.title', this.currentRow).text(title)
 	}
 	
 	this.appendRow = function(row) {
 		var destination = $('tbody.data', this.element);
 		destination.append(this.currentRow);
-	}	
-};
-
-
-
+	}
+}
