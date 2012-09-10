@@ -18,5 +18,5 @@ Before () {
 
 After () {
 	bindingUpdater.remove()
-	BetamaxUtil.stopProxy('cucumber', [:])
+	BetamaxUtil.stopProxy()
 }

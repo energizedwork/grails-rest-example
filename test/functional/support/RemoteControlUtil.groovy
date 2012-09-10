@@ -1,15 +1,16 @@
 package support
 
-
 import demo.Content
-import grails.plugin.remotecontrol.RemoteControl;
-import groovy.lang.Closure;
+import demo.Job
+import grails.plugin.remotecontrol.RemoteControl
+
 
 class RemoteControlUtil {
 		
 	static void nuke() {
 		exec {
 			Content.list()*.delete(flush:true)
+			Job.list()*.delete(flush:true)
 		}
 	}
 	

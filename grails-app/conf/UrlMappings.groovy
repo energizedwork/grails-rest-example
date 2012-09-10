@@ -2,6 +2,15 @@ class UrlMappings {
 
 	static mappings = {
 
+		"/"(controller: 'UserInterface')
+		
+		"/$action"(controller: 'UserInterface') {
+			constraints {
+				action(in: ['content'])
+			}
+		}
+
+		
 		// "/api/content/$id?"(resource: "content")
 		
 		"/api/$controller/$id" {
@@ -11,8 +20,7 @@ class UrlMappings {
 		"/api/$controller" {
 			action = [GET: "list", POST: "create"]
 		}
-		
-		"/"(view:"/index")
+				
 		"500"(view:'/error')
 	}
 }

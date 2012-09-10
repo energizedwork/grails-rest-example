@@ -18,7 +18,7 @@ class BetamaxUtil {
 			stopProxy()
 		}
 	}
-	
+		
 	static startProxy = { String tape, Map args ->
 		RemoteControlUtil.exec {
 			Recorder recorder = ctx.getBean('recorder')

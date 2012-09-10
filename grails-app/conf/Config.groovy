@@ -94,3 +94,15 @@ log4j = {
            'org.hibernate',
            'net.sf.ehcache.hibernate'
 }
+
+grails.resources.modules = {
+	core {
+		dependsOn 'jquery'
+	}
+	content {
+		dependsOn 'core'
+		resource url:'/js/content/content-init.js'
+		resource url:'/js/content/content-api.js'
+		resource url:'/js/content/content-table.js'
+	}
+}
