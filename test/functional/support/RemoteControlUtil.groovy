@@ -7,12 +7,6 @@ import grails.plugin.remotecontrol.RemoteControl
 
 class RemoteControlUtil {
 		
-	static void nuke() {
-		exec {
-			TestUtil.nuke()
-		}
-	}
-	
 	static exec(Closure closure) {
 		remoteControl.exec(closure)
 	}

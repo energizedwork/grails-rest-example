@@ -10,5 +10,5 @@ When(~'(?:\\w+) opens the content page') { ->
 }
 
 Then(~'display all items of content') { ->
-	assert page.items.size() == allContent.size()		
+	page.items.size() == allContent.size()
 }

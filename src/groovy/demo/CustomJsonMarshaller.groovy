@@ -8,15 +8,12 @@ class CustomJsonMarshaller {
 		}
 	}
 	
-	static jobMarshaller = { Job job ->
-		
-	}
-	
 	static marshall(def marshaller) {
 		try {
 			marshaller()
 		} catch (Exception e) {
-			e.message
+			e.printStackTrace()
+			[error: e.message]
 		}
 	}
 	

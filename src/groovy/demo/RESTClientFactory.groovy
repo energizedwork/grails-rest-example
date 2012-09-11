@@ -11,8 +11,13 @@ class RESTClientFactory {
 	RESTClient client = new RESTClient()
 	
 	RESTClient getClient() {
+		
+		// Required for Betamax
 		enableProxyConfiguration()
+		
+		// Required to POST data
 		defaultToUrlEncoding()
+		
 		client
 	}
 	

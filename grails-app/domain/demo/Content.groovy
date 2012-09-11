@@ -1,6 +1,6 @@
 package demo
 
-class Content implements Serializable {
+class Content {
 
 	String title
 		

@@ -1,6 +1,6 @@
 package demo
 
-class Job implements Serializable {
+class Job {
 
 	String name
 	String url

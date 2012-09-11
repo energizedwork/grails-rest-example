@@ -9,7 +9,6 @@ import org.junit.Rule
 
 class JenkinsServerSpec extends UnitSpec {
 	
-	
 	@Rule Recorder recorder = new Recorder()
 	
 	@Betamax(tape="jobs")
@@ -23,7 +22,6 @@ class JenkinsServerSpec extends UnitSpec {
 		
 		then:
 			jobs.size() == 6
-			
 	}
 	
 }

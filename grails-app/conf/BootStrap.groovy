@@ -6,7 +6,6 @@ class BootStrap {
 
     def init = { servletContext ->
 		JSON.registerObjectMarshaller(Content, CustomJsonMarshaller.contentMarshaller)
-		
     }
 	
     def destroy = {

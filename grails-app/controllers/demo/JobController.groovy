@@ -3,12 +3,14 @@ package demo
 import grails.converters.JSON
 
 class JobController {
-
+	
 	JenkinsServer jenkinsServer
 	
 	def list() {
-		List results = jenkinsServer.getJobs(params.url)
-		render results as JSON
+		
+		List jobs = jenkinsServer.getJobs(params.url)
+		render jobs as JSON
+		
 	}
 	
 }

@@ -10,12 +10,12 @@ class UrlMappings {
 			}
 		}
 		
-		"/api/$controller/$id" {
-			action = [GET : "show"]
-		}
-				
 		"/api/$controller" {
-			action = [GET : "list", POST: "create"]
+			action = [GET: "list", POST: "create"]
+		}
+		
+		"/api/$controller/$id" {
+			action = [GET: "show", DELETE: "delete"]
 		}
 		
 		"500"(view:'/error')
